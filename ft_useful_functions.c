@@ -6,36 +6,58 @@
 /*   By: tgomes-l <tgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 15:30:30 by tgomes-l          #+#    #+#             */
-/*   Updated: 2023/01/08 15:55:20 by tgomes-l         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:56:33 by tgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+size_t	ft_strlen(const char *str)
 {
-    write (1, &c, 1);
-    return (1);
+	size_t	count;
+	char	*tempstr;
+
+	tempstr = (char *)str;
+	count = 0;
+	while (tempstr[count])
+	{
+		count++;
+	}
+	return (count);
 }
 
-int	ft_putnbr(int n)
+char	*ft_strchr(const char *s, int c)
 {
-	long	ln;
+	unsigned char	ch;
 
-	ln = n;
-	if (ln < 0)
+	ch = c;
+	while (*s)
 	{
-		ft_putchar('-');
-		ln = ln * -1;
+		if ((char)*s == ch)
+			return ((char *)s);
+		s++;
 	}
-	if (ln >= 0 && ln <= 9)
+	if (ch == '\0')
+		return ((char *)s);
+	return (0);
+}
+
+int	ft_putstr(char *s)
+{
+	int	x;
+	int	len;
+
+	x = 0;
+	len = 0;
+	if (!s)
 	{
-		ft_putchar(ln + '0');
+		write(1, "(null)", 6);
+		return (6);
 	}
-	else if (ln > 9)
+	while (s[x])
 	{
-		ft_putnbr(ln / 10);
-		ft_putnbr(ln % 10);
+		len += ft_putchar(s[x]);
+		x++;
 	}
-	return (1);
+	return (len);
 }
