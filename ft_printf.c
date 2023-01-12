@@ -6,17 +6,11 @@
 /*   By: tgomes-l <tgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:07:23 by tgomes-l          #+#    #+#             */
-/*   Updated: 2023/01/10 19:21:50 by tgomes-l         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:51:14 by tgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_putchar(char c)
-{
-	write (1, &c, 1);
-	return (1);
-}
 
 static int	ft_printf_arg(const char *sign, int i, va_list ap)
 {
@@ -33,9 +27,9 @@ static int	ft_printf_arg(const char *sign, int i, va_list ap)
 	if (sign[i + 1] == 'u')
 		return (ft_putnbr_u(va_arg(ap, unsigned int)));
 	if (sign[i + 1] == 'x')
-		return (print_hex_lc(va_arg(ap, int)));
+		return (ft_print_hex(va_arg(ap, unsigned int), 'x'));
 	if (sign[i + 1] == 'X')
-		return (print_hex_upc(va_arg(ap, int)));
+		return (ft_print_hex(va_arg(ap, unsigned int), 'X'));
 	return (0);
 }
 
@@ -49,10 +43,8 @@ int	ft_printf(const char *str, ...)
 	j = 0;
 	va_start(ap, str);
 	if (!str)
-	{
 		return (0);
-	}
-	while (str[i])
+	while (str[i] && str[i] != '\0')
 	{
 		if (str[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
 		{

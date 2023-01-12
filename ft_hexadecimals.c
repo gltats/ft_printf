@@ -6,49 +6,30 @@
 /*   By: tgomes-l <tgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:40:51 by tgomes-l          #+#    #+#             */
-/*   Updated: 2023/01/10 19:27:51 by tgomes-l         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:45:08 by tgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//">>" shifts the bits of its first operand to the right by the number 
-//of positions specified by the second operand. 
-//It shifts the bits of x 4 places to the right.
 
-int	print_hex_lc(int x)
+int	ft_print_hex(unsigned int nb, char l)
 {
-	char	buf[8];
-	int		i;
-	int		count;
+	int	len;
 
-	i = 7;
-	count = 0;
-	buf[i] = '\0';
-	while (x > 0 && i > 0)
+	len = 0;
+	if (nb < 10)
+		len += ft_putchar(nb + '0');
+	else if (nb < 16)
 	{
-		buf[--i] = HEX_DIGITS_LC[x & 0xf];
-		x = x >> 4;
-		count++;
+		if (l == 'x')
+			len += ft_putchar(nb + 'a' - 10);
+		else if (l == 'X')
+			len += ft_putchar(nb + 'A' - 10);
 	}
-	ft_putstr(buf + i);
-	return (count);
-}
-
-int	print_hex_upc(int x)
-{
-	char	buf[8];
-	int		i;
-	int		counter;
-
-	i = 7;
-	counter = 0;
-	buf[i] = '\0';
-	while (x > 0 && i > 0)
+	else
 	{
-		buf[--i] = HEX_DIGITS_UPC[x & 0xf];
-		x = x >> 4;
-		counter++;
+			len += ft_print_hex(nb / 16, l);
+			len += ft_print_hex(nb % 16, l);
 	}
-	ft_putstr (buf + i);
-	return (counter);
+	return (len);
 }

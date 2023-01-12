@@ -6,12 +6,11 @@
 /*   By: tgomes-l <tgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:47:46 by tgomes-l          #+#    #+#             */
-/*   Updated: 2023/01/10 20:06:28 by tgomes-l         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:31:59 by tgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int	ft_putnbr(int n)
 {
@@ -40,7 +39,8 @@ int	ft_putnbr(int n)
 //unsigned does not have - values, max. value: 4294967295
 int	ft_putnbr_u(unsigned int n)
 {
-	int len;
+	int	len;
+
 	len = 0;
 	if (n <= 9)
 	{

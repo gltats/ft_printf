@@ -6,11 +6,24 @@
 /*   By: tgomes-l <tgomes-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 15:30:30 by tgomes-l          #+#    #+#             */
-/*   Updated: 2023/01/10 19:56:33 by tgomes-l         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:51:21 by tgomes-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putchar(char c)
+{
+	write (1, &c, 1);
+	return (1);
+}
+
+int	ft_islowercase(int c)
+{
+	if (c >= 97 && c <= 122)
+		return (1);
+	return (0);
+}
 
 size_t	ft_strlen(const char *str)
 {
