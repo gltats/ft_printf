@@ -4,7 +4,7 @@ Ft_printf has been created for the Core curses at 42 Wolfsburg.
 The intention is to create a library of functions.
 
 ## Status:
-- Actual status:  finished.\
+- Actual status:  finished.
 - Result : 100%
 
 ## Technical considerations:
