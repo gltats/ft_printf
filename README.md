@@ -5,7 +5,7 @@ The intention is to create a library of functions.
 
 ## Status:
 - Actual status:  finished.
-- Result : 100%
+- Result : [![pipex - 100%✅](https://img.shields.io/badge/100%25%E2%9C%85-brightgreen.svg?style=for-the-badge&logo=&logoColor=white)](https://github.com/gltats/Pipex)
 
 ## Technical considerations:
 The prototype of ft_printf() is:
